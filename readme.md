@@ -33,6 +33,7 @@
 
 然后配置 nginx 的伪静态。
 
+    root /path/to/blog/public/;
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
