@@ -31,11 +31,13 @@
     DB_USERNAME=blog
     DB_PASSWORD=blog
 
-然后配置 nginx 的伪静态。
+配置 nginx 的伪静态，并启动。
 
     root /path/to/blog/public/;
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
 
-看到这么多条步骤 ... 我都不太想安装了。
+打开域名 /user/password?password=your_password 生成你的密码串（[你也可以访问在线版本](https://www.qiyichao.cn/user/password?password=test)），将这个密码串保存到数据库中的 users 表的 password 字段，并修改你的账户信息。
+
+做完这些事情，就可以使用啦。不过看到这么多条步骤 ... 我都不太想安装了。
