@@ -28,9 +28,9 @@ class PaperController extends Controller
         } else if (!empty($category_name)) {
             // 返回指定分类下的文章列表
             $category = Category::where('name', $category_name)->first();
-            return $category->paper()->where('page', false)->orderBy('created_at', 'desc')->paginate(5);
+            return $category->paper()->select('id', 'title', 'created_at')->where('page', false)->orderBy('created_at', 'desc')->paginate(5);
         } else {
-            return Paper::where('page', false)->orderBy('created_at', 'desc')->paginate(5);
+            return Paper::where('page', false)->select('id', 'title', 'created_at')->orderBy('created_at', 'desc')->paginate(5);
         }
     }
 
