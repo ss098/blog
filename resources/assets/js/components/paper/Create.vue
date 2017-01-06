@@ -63,7 +63,7 @@
                 this.$http.post('/paper', {paper: paper, token: user.token}).then(function (response) {
                     if (response.data.success) {
                         let paper = response.data.paper
-                        this.$router.push('/文章/' + paper.title)
+                        this.$router.push('/paper/' + paper.title)
                     } else {
                         self.message = response.data.message
                     }

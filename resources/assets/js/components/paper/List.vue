@@ -5,7 +5,7 @@
         </div>
         <div v-if="!loading">
         <div class="card-content paper-list-item" v-for="item in paper_list['data']">
-            <p><router-link :to="'/文章/' + item.title">
+            <p><router-link :to="'/paper/' + item.title">
                 {{ item.title }}
             </router-link></p>
             <span class="small-text">

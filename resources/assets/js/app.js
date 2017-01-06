@@ -27,26 +27,27 @@ const router = new VueRouter({
             component: PaperList
         },
         {
-            path: '/登录',
+            path: '/login',
             name: 'login',
             component: require('./components/user/Login.vue')
         },
         {
             path: '/:name',
+            name: 'category',
             component: PaperList
         },
         {
-            path: '/文章/:name',
+            path: '/paper/:name',
             component: require('./components/paper/Read.vue'),
             name: 'paper'
         },
         {
-            path: '/后台/创建文章',
+            path: '/paper/create',
             component: require('./components/paper/Create.vue'),
             name: 'paper_create'
         },
         {
-            path: '/后台/编辑文章/:name',
+            path: '/paper/edit/:name',
             component: require('./components/paper/Edit.vue'),
             name: 'paper_edit'
         }

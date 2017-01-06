@@ -76,7 +76,7 @@
                 let user = store.get("user")
 
                 this.$http.put('/paper/' + paper.id, {paper: paper, token: user.token}).then((response) => {
-                        this.$router.push('/文章/' + paper.title)
+                        this.$router.push('/paper/' + paper.title)
                     }
                 )
             }

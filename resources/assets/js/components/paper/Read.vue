@@ -9,27 +9,19 @@
         <div v-else>
             <div class="card-sidebar title">
                 <h1>{{ paper.title ? paper.title : title }}</h1>
-                <p v-if="paper.created_at">最早发表于{{ format_date }}</p>
+                <p v-if="paper.created_at">最后更新于{{ format_date }}</p>
                 <div v-if="user">
                     <button v-if="!toolbar_show" @click="toolbar_show = !toolbar_show" class="button">
                         显示管理工具栏
                     </button>
                     <p v-else>
-                        <router-link :to="'/后台/编辑文章/' + paper.title">
+                        <router-link :to="'/paper/edit/' + paper.title">
                             编辑文章内容
                         </router-link>
                         <a @click="remove_paper">
                             移动到回收站
                         </a>
                     </p>
-                </div>
-            </div>
-            <div class="card-content" v-if="archive_list && archive_list.length > 1">
-                <div class="dropdown">
-                    <button class="button">历史版本</button>
-                    <div class="dropdown-content" v-for="item in archive_list">
-                        <router-link :to="'/文章/' + title + '/' + item.title">{{ item.title }}</router-link>
-                    </div>
                 </div>
             </div>
             <div class="card-content" v-html="paper.content"></div>
@@ -101,7 +93,7 @@
                 return title ? title : ''
             },
             format_date: function () {
-                let time = this.paper.created_at
+                let time = this.paper.updated_at
                 let today = moment(),
                     date = moment(time)
 

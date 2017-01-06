@@ -1,8 +1,8 @@
 <template>
     <nav class="card-header" role="navigation">
-        <router-link v-bind:to="'/'" v-bind:class="{'active': !name}">首页</router-link></li>
+        <router-link v-bind:to="'/'" v-bind:class="{'active': !name}">首页</router-link>
         <router-link v-for="item in menu['category']" v-bind:to="'/' + item.name" v-bind:class="{'active': item.name == name}">{{ item.name }}</router-link>
-        <router-link v-for="item in menu['page']" v-bind:to="'/文章/' + item.title" v-bind:class="{'active': item.title == name}">{{ item.title }}</router-link>
+        <router-link v-for="item in menu['page']" v-bind:to="'/paper/' + item.title" v-bind:class="{'active': item.title == name}">{{ item.title }}</router-link>
     </nav>
 </template>
 <script>
