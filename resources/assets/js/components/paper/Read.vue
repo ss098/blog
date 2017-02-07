@@ -71,7 +71,8 @@
             },
             remove_paper: function () {
                 let id = this.paper.id
-                this.$http.delete("/paper/" + id, {params: {
+                this.$http.post("/paper/" + id, {params: {
+                    _method: 'DELETE',
                     token: this.user.token
                 }}).then((response) => {
                     if (response.data.success) {

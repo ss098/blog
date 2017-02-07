@@ -75,7 +75,11 @@
                 let self = this
                 let user = store.get("user")
 
-                this.$http.put('/paper/' + paper.id, {paper: paper, token: user.token}).then((response) => {
+                this.$http.post('/paper/' + paper.id, {
+                    _method: 'PUT',
+                    paper: paper,
+                    token: user.token
+                }).then((response) => {
                         this.$router.push('/paper/' + paper.title)
                     }
                 )
@@ -94,7 +98,6 @@
                 }
                 for (item in paper) {
                     if (!paper[item]) {
-                        console.log(item)
                         this.message = ["不允许有未填写字段"]
                         return false
                     }
