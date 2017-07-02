@@ -4,22 +4,23 @@
             <loading class="card-content"></loading>
         </div>
         <div v-if="!loading">
-        <div class="card-content paper-list-item" v-for="item in paper_list['data']">
-            <p><router-link :to="'/paper/' + item.title">
-                {{ item.title }}
-            </router-link></p>
-            <span class="small-text">
-                最早发表于{{ fotmat_time(item.created_at) }}
-            </span>
+            <div class="card-content paper-list-item" v-for="item in paper_list['data']">
+                <p><router-link :to="'/paper/' + item.title">
+                    {{ item.title }}
+                </router-link></p>
+                <span class="small-text">
+                    最早发表于{{ fotmat_time(item.created_at) }}
+                </span>
+            </div>
+            <ul class="pagination" v-if="paper_list['last_page'] > 1">
+                <!-- Vue Router 会对中文路由编码，所以采用拼接路由的方案 -->
+                <li><router-link :to="'/' + category + '?page=' + 1" v-if="page > 1">&laquo;</router-link><a disabled v-else>&laquo;</a></li>
+                <li v-for="i in range_page(page)">
+                    <router-link :to="'/' + category + '?page=' + i">{{ i }}</router-link>
+                </li>
+                <li><router-link :to="'/' + category + '?page=' + paper_list['last_page']" v-if="page < paper_list['last_page']">&raquo;</router-link><a disabled v-else>&raquo;</a></li>
+            </ul>
         </div>
-        <ul class="pagination" v-if="paper_list['last_page'] > 1">
-            <!-- Vue Router 会对中文路由编码，所以采用拼接路由的方案 -->
-            <li><router-link :to="'/' + category + '?page=' + 1" v-if="page > 1">&laquo;</router-link><a disabled v-else>&laquo;</a></li>
-            <li v-for="i in range_page(page)">
-                <router-link :to="'/' + category + '?page=' + i">{{ i }}</router-link>
-            </li>
-            <li><router-link :to="'/' + category + '?page=' + paper_list['last_page']" v-if="page < paper_list['last_page']">&raquo;</router-link><a disabled v-else>&raquo;</a></li>
-        </ul>
     </div>
 </template>
 <script>
