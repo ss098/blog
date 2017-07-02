@@ -2,7 +2,7 @@
     <footer class="card-footer">
         <span>&copy; {{ year }} 正义的小可爱</span>
         <span>豫 ICP 备 15005862 号</span>
-        <span v-if="!user"><router-link v-bind:to="{name: 'login'}">登录</router-link></li></span>
+        <span v-if="!user"><router-link v-bind:to="{name: 'login'}">登录</router-link></span>
         <span v-else>
             {{ user.name }}
             <router-link v-bind:to="{name: 'paper_create'}">创建文章</router-link>
